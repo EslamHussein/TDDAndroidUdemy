@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TDDAndroidUdemy</string>
+    <string name="email_hint">email</string>
+    <string name="password_hint">password</string>
+    <string name="sign_up_button_text">Signup</string>
+    <string name="timeline">Timeline</string>
 </resources>
