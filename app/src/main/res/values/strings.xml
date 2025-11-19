@@ -4,4 +4,5 @@
     <string name="password_hint">password</string>
     <string name="sign_up_button_text">Signup</string>
     <string name="timeline">Timeline</string>
+    <string name="create_an_account">Create an account</string>
 </resources>

@@ -46,9 +46,10 @@ fun SignUpScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically)
         ) {
-
-            Text("Create an account", style = MaterialTheme.typography.displaySmall)
-
+            Text(
+                stringResource(R.string.create_an_account),
+                style = MaterialTheme.typography.displaySmall
+            )
             OutlinedTextField(
                 value = state.email,
                 onValueChange = {},
@@ -56,7 +57,6 @@ fun SignUpScreen(
                     Text(stringResource(R.string.email_hint))
                 }
             )
-
 
             PasswordTextField(
                 password = state.password,
@@ -68,10 +68,7 @@ fun SignUpScreen(
             Button(onClick = {}) {
                 Text(stringResource(R.string.sign_up_button_text))
             }
-
         }
-
-
     }
 
 }
@@ -92,19 +89,27 @@ private fun PasswordTextField(
             Text(stringResource(R.string.password_hint))
         },
         trailingIcon = {
-
-            Icon(
-                modifier = Modifier.clickable {
+            PasswordDisabilityToggle(
+                passwordIsVisible,
+                onToggle = {
                     passwordIsVisible = !passwordIsVisible
-                },
-                imageVector = if (passwordIsVisible) Icons.Default.RemoveRedEye else Icons.Default.VisibilityOff,
-                contentDescription = "show password"
+                }
             )
         },
         visualTransformation = if (passwordIsVisible) VisualTransformation.None else PasswordVisualTransformation()
     )
 }
 
+@Composable
+fun PasswordDisabilityToggle(isVisible: Boolean, onToggle: () -> Unit) {
+    Icon(
+        modifier = Modifier.clickable {
+            onToggle()
+        },
+        imageVector = if (isVisible) Icons.Default.RemoveRedEye else Icons.Default.VisibilityOff,
+        contentDescription = "show password"
+    )
+}
 
 @Preview(showBackground = true)
 @Composable
